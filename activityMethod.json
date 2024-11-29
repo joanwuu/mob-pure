@@ -1,0 +1,114 @@
+{
+    "baseUrl": "https://brand.vaporesso.com/vaporesso/java/data/activity/",
+    "method": [
+        {
+            "name": "测试",
+            "url":"/vote/get_test",
+            "method": "GET"
+        },
+        {
+            "name": "获取投票数",
+            "url":"/vote/list",
+            "method": "POST",
+            "requsetParams": {
+                "activityType": "care_2024"
+            },
+            "responseData": {
+                "message": "",
+                "status": 200,
+                "data": {
+                    "list": [{
+                        "id": 1,
+                        "num": "11",
+                        "activityType": "care_2024",
+                        "description": ""
+                    }]
+                }
+            }
+        }, {
+            "name": "投票",
+            "url":"/vote/update",
+            "method": "POST",
+            "requsetParams": {
+                "id": 8,
+                "isAdd": true
+            },
+            "responseData": {
+                "message": "",
+                "status": 200,
+                "data": {
+                    "id": 8,
+                    "num": "11",
+                    "activityType": "care_2024",
+                    "description": ""
+                }
+            }
+        }, {
+            "name": "抽奖",
+            "url":"/lottery",
+            "method": "GET",
+            "responseData": {
+                "message": "",
+                "status": 200,
+                "data": {
+                    // 0-折扣码，1-一等奖，2-二等奖，3-三等奖
+                    "prizeId": 0
+                }
+            }
+        }, {
+            "name": "提交中奖接口",
+            "url":"/email/add",
+            "method": "POST",
+            "requsetParams": {
+                "prizeId": 0,
+                "Email": "",
+                "activityType": "care_2024"
+            },
+            "responseData": {
+                "message": "",
+                "status": 200,
+                "data": {
+                    "prizeId": 0
+                }
+            }
+        }, {
+            "name": "签名列表",
+            "url":"/comment/list",
+            "method": "POST",
+            "requsetParams": {
+                "activityType": "care_2024"
+            },
+            "responseData": {
+                "message": "",
+                "status": 200,
+                "data": {
+                    "list": [{
+                        "name": "aaa",
+                        // 前端自行进行id和图片的对应
+                        "avatar_id": 0,
+                        "activeType": "care_2024"
+                    }]
+                }
+            }
+        }, {
+            "name": "提交签名",
+            "url":"/comment/add",
+            "method": "POST",
+            "requsetParams": {
+                "name": "aaa",
+                "avatar_id": 0,
+                "activeType": "care_2024"
+            },
+            "responseData": {
+                "message": "",
+                "status": 200,
+                "data": {
+                    "name": "aaa",
+                    "avatar_id": 0,
+                    "activeType": "care_2024"
+                }
+            }
+        }
+    ]
+
+}

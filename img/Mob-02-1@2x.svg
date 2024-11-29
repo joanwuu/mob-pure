@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="317px" height="177px" viewBox="0 0 317 177" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Mob-02-1@2x</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="305" height="165" rx="30"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="305" height="165" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Mob-PURE-POWER-FOR-ALL-活动页-1" transform="translate(-29, -2226)" fill="#ADD753">
+            <g id="编组-8" transform="translate(35, 2056)">
+                <g id="Mob-02-1" transform="translate(0, 176)">
+                    <rect id="矩形" stroke="#ADD753" stroke-width="5.53749799" x="-2.76874899" y="-2.76874899" width="310.537498" height="170.537498" rx="30"></rect>
+                    <use id="矩形" stroke="#000000" mask="url(#mask-2)" stroke-width="1.96396833" stroke-dasharray="5.400912903315588" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

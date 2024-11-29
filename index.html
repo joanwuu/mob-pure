@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+  </head>
+  <body>
+    <!-- 弹窗 -->
+    <!-- <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>这是一个中间弹窗！</p>
+        </div>
+    </div> -->
+    <!-- 遮罩层 -->
+    <div id="cover" class="m-cover"></div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <img id="close-btn-1" onclick="closeModal()" class="modal-close-btn" src="img/close-btn@2x.png" alt="">
+            <img class="m-1-image_2"
+                referrerpolicy="no-referrer"
+                src="img/01-3@2x.svg"
+            />
+            <!-- 抽奖部分 -->
+            <!-- <div class="m-2-gift-box flex-col align-center">
+                <img class="m-2-gif-img" src="img/jiangpin@2x.png" alt="">
+                <div class="m-2-title">THIS IS YOUR MOMENT TO FUEL YOUR LUCK</div>
+                <div class="m-2-text">Thank you for your vote! Your support really means a lot to PURE POWER ACTION. Now, it's the time to give it a shot to claim rewards!</div>
+                <img class="m-2-try-btn" src="img/try-btn.png" alt="">
+            </div> -->
+            <!-- 中奖折扣码 -->
+            <div class="m-2-gift-box flex-col align-center">
+                <!-- <img class="m-2-gif-img" src="img/discount@2x.png" alt="">
+                <div class="m-2-title">CONGRATULATIONS！</div> -->
+                <!-- 抽奖部分 -->
+                <div>
+                  <img class="m-2-gif-img" src="img/jiangpin@2x.png" alt="">
+                  <div id="step-1">
+                    <div class="m-2-title">THIS IS YOUR MOMENT TO FUEL YOUR LUCK</div>
+                    <div class="m-2-text">Thank you for your vote! Your support really means a lot to PURE POWER ACTION. Now, it's the time to give it a shot to claim rewards!</div>
+                    <img onclick="lottery()" class="m-2-try-btn" src="img/try-btn.png" alt="">
+                  </div>
+                </div>
+                <!-- 填写邮箱 -->
+                 <div id="step-2"  style="display: none;">
+                  <div class="m-2-title">CONGRATULATIONS！</div>
+                  <div class="m-2-text">
+                    You've claimed your exclusive reward — a 20% off discount code! Your exclusive discount code will be sent to you by email. Please fill in the real and effective email information below and unlock the fantastic vaping world.</div>
+                  <div class="input-box flex-row justify-between">
+                      <input type="text" placeholder="Email">
+                      <div onclick="submitPrize()" class="m-2-sumbit-btn justify-center align-center">Comfire</div>
+                      <div class="err-tip">Invalid email</div>
+                  </div>
+                 </div>
+
+                <!-- 邮箱发送成功 -->
+                 <div id="step-3" style="display: none;">
+                  <div class="m-2-title">CONGRATULATIONS！</div>
+                  <div class="m-2-text">
+                    A 20% off discount code! Your exclusive discount code will be sent to you by email. 
+                 </div>
+                 <div class="discount-code-box flex-col align-center justify-center">
+                    <div>
+                        <span id="textToCopy">XXXXXXXXXXXX</span>
+                        <img id="copyButton" width="20" src="img/copy@2x.png" alt="Copy">
+                    </div>
+                    <div class="copy-tips">Your discount code has been successfully sent.</div>
+                 </div>
+                 <div class="show-btn flex-col align-center justify-center" onclick="closeModal()">Shop Now</div>
+                 </div>
+
+                 <!-- 没中奖 -->
+                  <div style="display: none;">
+                    <img class="m-2-gif-img" src="img/noprizes@2x.png" alt="">
+                    <div class="m-2-title" style="margin-top: 76px;">ALMOST THERE!</div>
+                    <div class="m-2-text" style="margin-bottom: 112px;">There are still prizes in the pool and GOOD LUCK with your next try!</div>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <div id="rule-modal" class="modal">
+      <div class="modal-content">
+          <img id="close-btn-2" onclick="closeRuleModal()" class="modal-close-btn" src="img/close-btn@2x.png" alt="">
+          <img class="m-1-image_2"
+      referrerpolicy="no-referrer"
+      src="img/01-3@2x.svg"
+    />
+    <div  class="m-1-group_1 flex-col">
+      <div  class="m-1-text-wrapper_4 flex-row">
+          <span  class="m-1-text_1">Voting and Drawing Rules</span>
+        </div>
+        <div  class="m-1-section_1 flex-row justify-between">
+          <span  class="m-1-paragraph_2"
+            >Number of votes: unlimited<br />Prizes:<br />- DJI MINI 4 pro x 1<br />- Osmo Action 5 pro x 2<br />- DJI NEO x 3<br />- VAPORESSO E-Store 20% discount code x 100 (*Single use when paying for an order, some specific products cannot be used)<br />Every time a user completes a vote, the green energy value corresponding to the number of votes will be converged into the total energy bar, click on the Lucky Draw button that appears, you can participate in the lucky draw online, the prizes are randomly output, the winning user needs to fill in the winning interface with valid prize receipt information, the VAPORESSO E-Store product discount code will be sent out immediately by email, and the rest of the prizes will be sent out after the end of the activity.</span
+          >
+        </div>
+    </div>
+  </div>
+  </div>
+    <!-- 游戏规则 -->
+    <!-- <div id="myModal" class="modal">
+        <div class="modal-content">
+            <img class="modal-close-btn" src="img/close-btn@2x.png" alt="">
+            <img class="m-1-image_2"
+                referrerpolicy="no-referrer"
+                src="img/vaporesso-logo.png"
+            />
+            <div class="m-2-gift-box flex-col align-center">
+                <img class="m-2-gif-img" src="img/jiangpin@2x.png" alt="">
+                <div class="m-2-title">THIS IS YOUR MOMENT TO FUEL YOUR LUCK</div>
+                <div class="m-2-text">Thank you for your vote! Your support really means a lot to PURE POWER ACTION. Now, it's the time to give it a shot to claim rewards!</div>
+                <img class="m-2-try-btn" src="img/try-btn.png" alt="">
+            </div>
+        </div>
+    </div> -->
+    <div class="page flex-col">
+      <div class="group_1 flex-col">
+        <img
+          class="image_2"
+          referrerpolicy="no-referrer"
+          src="img/Mob-01-3@3x.png"
+        />
+        <div class="text-group_19 flex-col">
+          <span class="text_1">PURE POWER F<img width="37" src="img/Mob-01-2@2x.png" alt="">R ALL</span>
+          <span class="text_2"
+            >2024 Global ECO-Empowerment Initiative            </span
+          >
+        </div>
+        <!-- <img
+          class="image_3"
+          referrerpolicy="no-referrer"
+          src="https://lanhu-oss.lanhuapp.com/SketchPng78a0faf3190f53a4d6c94d2c35ca81f923077b61c2fefd4edc3663fa3cedcb59"
+        /> -->
+        <span class="text_3">2024.12.2~2024.12.31</span>
+      </div>
+      <div class="block_11 flex-col">
+        <span class="text_4"
+          >EXPLORING A
+          SUSTAINABLE FUTURE
+          WITH VAPORESSO
+          </span
+        >
+        <div class="block_11-border"></div>
+        <!-- <img
+          class="image_4"
+          referrerpolicy="no-referrer"
+          src="https://lanhu-oss.lanhuapp.com/SketchPnga07d3e4abc7f7db29d3d24908e088197689077520875dfecaef5e46018793bec"
+        /> -->
+        <div class="text-wrapper_13 flex-row justify-between">
+          <span class="text_5"
+            >Leading the Way
+            in Eco-Innovation
+            </span
+          >
+          <span class="text_6"
+            >Inspiring Waves of
+            Sustainable Action 
+            </span
+          >
+          <span class="text_7"
+            >Paving the Path Towards
+            a Brighter Tomorrow
+            </span
+          >
+        </div>
+      </div>
+      <div class="group_3 flex-col">
+        <span class="text_8"
+          >Leading the Way in Eco-Innovation
+          </span
+        >
+        <div class="block_1 flex-col">
+          <div class="text-group_20 flex-col">
+            <span class="text_9">Industry's First</span>
+            <span class="text_10">Solar Powered</span>
+            <span class="text_11">Open-System Vape</span>
+          </div>
+          <div class="group_4 flex-row justify-between">
+            <div class="section_4 flex-col">
+              <div class="box_2 flex-col"></div>
+              <div class="box_3 flex-col"></div>
+              <div class="box_4 flex-col"></div>
+            </div>
+            <div class="text-group_21 flex-col">
+              <span class="text_12"
+                >Fully recyclable structural design sets a new standard</span
+              >
+              <span class="text_13"
+                >Innovative materials redefine eco-friendly practices</span
+              >
+              <span class="text_14"
+                >Clean energy usage revolutionize conventional power sources</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="text-group_22 flex-col">
+          <span class="text_15">ECO NANO SOLAR</span>
+          <span class="text_16"
+            >Pioneering A Sustainable Vision (with Determination)</span
+          >
+          <span class="text_17"
+            >Redefining the industry's understanding of clean energy, ECO NANO SOLAR is setting a bold precedent for eco-friendly innovation. A breakthrough not only marks a major improvement in product development, but this is also a daring step for the industry's sustainable practices, exploring new paths for renewable power sources.</span
+          >
+        </div>
+
+        <div class="img-slide-section">
+          <div class="img-slide-layout">
+            <div class="img-slide-wrapper">
+              <div class="img-slide-item flex-col img-slide-item-01" style="z-index: 5;top: 100px;left: 0px;">
+                <div class="img-slide-item-box">
+                  <div class="img-slide-item-title">
+                    Groundbreaking Application of Degradable Photovoltaic Technology
+                    </div>
+                    <video src="video/Mob-03-1.mp4" poster="video/Mob-03-1.jpg" muted controls></video>
+                  <!-- <img src="img/Mob-03-1@3x.jpg" alt=""> -->
+                  <div class="img-slide-item-text">
+                    Powered by industry-leading OPV-PSC layered photovoltaic technology, ECO NANO SOLAR combines sustainable organic photovoltaic materials with high-performance perovskite solar cells. This innovative design achieves an impressive 26% light-to-electricity conversion efficiency and is over 80% biodegradable. When it’s time to dispose of the device, the organic photovoltaic base naturally decomposes, greatly enhancing its environmental sustainability.
+                  </div>
+                </div>
+              </div>
+              <div class="img-slide-item flex-col img-slide-item-02" style="z-index: 4;top: 117px;left: -1px;transform: scale(.97);">
+                <div class="img-slide-item-box">
+                  <div class="img-slide-item-title">
+                    Revolutionary Recyclable Solar Energy Storage System
+                    </div>
+                    <video src="video/Mob-03-2.mp4" poster="video/Mob-03-2.jpg" muted controls></video>
+                  <div class="img-slide-item-text">
+                    Featuring a state-of-the-art integrated solar panel and battery system, ECO NANO SOLAR is engineered with fully separable and 100% recyclable power units. The solar cells and battery components can be independently dismantled for specialized recycling, significantly reducing the risk of heavy metal pollution. This innovative design promotes a cleaner, safer recycling process, laying the groundwork for a sustainable tomorrow. 
+                  </div>
+                </div>
+              </div>
+              <div class="img-slide-item flex-col img-slide-item-03" style="z-index: 3;top: 136px;left: -2px;transform: scale(.93);">
+                <div class="img-slide-item-box">
+                  <div class="img-slide-item-title">
+                    Next-Generation Separable Modular Design
+                    </div>
+                  <!-- <img src="img/Mob-03-3@3x.jpg" alt=""> -->
+                  <video src="video/Mob-03-3.mp4" poster="video/Mob-03-3.jpg" muted controls></video>
+                  <div class="img-slide-item-text">
+                    ECO NANO SOLAR introduces a breakthrough in structural innovation, replacing the traditional integrated design with a modular structure. Each component—solar power unit, display screen, atomization core, and outer casing—is an independent, interchangeable module that can be freely replaced. This modularity enables extended product life, supports long-term use, reduces waste from disposal, and contributes to a more sustainable lifecycle. 
+                  </div>
+                </div>
+              </div>
+              <div class="img-slide-item flex-col img-slide-item-04" style="z-index: 2;top: 151px;left: -2px;transform: scale(.9);">
+                <div class="img-slide-item-box">
+                  <div class="img-slide-item-title">
+                    Meticulously Crafted from Eco-Conscious Materials
+                    </div>
+                  <!-- <img src="img/Mob-03-4@3x.jpg" alt=""> -->
+                  <video src="video/Mob-03-4.mp4" poster="video/Mob-03-4.jpg" muted controls></video>
+                  <div class="img-slide-item-text">
+                    Constructed with 70% eco-friendly materials, including high-purity aluminum alloy, recycled glass, organic cotton, and PCTG, the ECO NANO SOLAR sets a new standard in environmental responsibility. Its manufacturing process conserves up to 60% more energy than traditional e-cigarette production while reducing CO₂ emissions by approximately 40%. This pioneering design not only promotes solar energy but also makes a meaningful impact in reducing the industry's environmental footprint.
+                  </div>
+                </div>
+              </div>
+              <div class="img-slide-item flex-col img-slide-item-05" style="z-index: 1; top: 165px;left: -2px;transform: scale(.87);">
+                <div class="img-slide-item-box img-slide-item-box-5">
+                    <div class="">
+                      <div class="img-slide-item-box-5-title">
+                        Compared to conventional e-cigarettes, every 100 ECO NANO SOLAR devices result in:
+                      </div>
+                      <div class="img-slide-item-box-5-text-wrapper">
+                        <img width="56" src="img/03-5-icon 2@2x.svg" alt="">
+                        <div class="flex-col">
+                          <span>60%</span>
+                          <span>Reduction in Energy Consumption</span>
+                        </div>
+                      </div>
+                      <div class="img-slide-item-box-5-text-wrapper">
+                        <img width="56" src="img/03-5-icon 1@2x.svg" alt="">
+                        <div class="flex-col">
+                          <span>1000kg</span>
+                          <span>CO₂ Reduction</span>
+                        </div>
+                      </div>
+                      <div class="img-slide-item-box-5-text-wrapper">
+                        <img width="56" src="img/03-5-icon 3@2x.svg" alt="">
+                        <div class="flex-col">
+                          <span>75%%</span>
+                          <span>Product Recycling Rate</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text_18">
+                <span class="page-num">01</span> / 05</div>
+            </div>
+          </div>
+        </div>
+        <div class="slides-section">
+          <div class="slides-layout">
+            <div class="bg-wrapper">
+              <div class="team-background">
+                <video id="video-bg" preload loop muted src="img/video01.mp4" ></video>
+                <!-- <img src="img/Mob-04@2x.png" loading="lazy" alt=""> -->
+              </div>
+              <span class="text_31"
+                >VAPORESSO Driving Energy Sustainability through The Power of Innovation</span
+              >
+            </div>
+            <span class="text_28"
+              >Pioneering eco-friendly product innovation, VAPORESSO is leading the Industry into a new era of sustainable energy solutions.</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="text-wrapper_14 flex-row justify-center">
+        <span class="paragraph_2"
+          >Inspiring Waves<br/> of Sustainable Action </span
+        >
+      </div>
+      <div class="group_5 flex-col"></div>
+      <div class="block_12 flex-col">
+        <div class="box_19 flex-row justify-center">
+          <div class="text-group_26 flex-col">
+            <span class="text_32">Pure Power Action</span>
+            <span class="text_33"
+              >Generating Pure Power, Empowering Real Changes on a Global Scale</span
+            >
+            <span class="text_34"
+              >VVAPORESSO believes that great achievements are built on collective effort. Introducing the Pure Power Action—a global movement in partnership with vape stores to inspire a shift toward a sustainable way of life. By introducing clean energy solutions into vape stores and raising awareness about their benefits, we aim to create an immersive experience that inspires eco-conscious choices. Together, we can turn small, everyday actions into a powerful movement, laying the foundation for a cleaner planet for future generations.  </span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="group_8 flex-col">
+        <div class="text-group_27 flex-col align-center">
+          <span class="text_35"
+            >Your Action Makes a Great Impact </span
+          >
+          <span class="text_36"
+            >Now is the time to join the movement! Every action you take generates Pure Power, driving the momentum for Pure Power Action. Your incredible support can accelerate its global impact, bringing us closer to a sustainable future. Together, let’s turn small, meaningful steps into powerful actions!</span
+          >
+          <span class="text_37" onclick="showRuleModal()"
+            >Learn More About The Detailed Rules</span
+          >
+        </div>
+        <div class="group_9 flex-col">
+          <span class="text_38"
+            >Pure Power is growing stronger with your support.</span
+          >
+          <div id="progress-track" class="box_7 flex-col">
+            <div id="progress-bar" class="text-wrapper_5 flex-col">
+              <span class="text_39" id="current-num">0</span>
+            </div>
+          </div>
+          <div class="text-wrapper_15 flex-row justify-between">
+            <span class="text_40">0</span> <span class="text_41">100000</span>
+            <span class="text_42">500000</span>
+            <span class="text_43">1000000</span>
+          </div>
+        </div>
+        <div class="section_5 flex-col">
+          <div class="group_23 flex-col">
+            <div class="section_6 flex-row justify-between">
+              <img
+                class="image_22"
+                referrerpolicy="no-referrer"
+                src="img/06-1-1@2x.svg"
+              />
+              <div class="group_24 flex-col">
+                <div class="text-group_28 flex-col">
+                  <span class="text_84">
+                    Pure Power Level</span>
+                  <span class="text_85">319980</span>
+                  <span class="text_86"
+                    >1 Support = 100 Pure Power</span
+                  >
+                </div>
+                <div id="vote-btn" class="section_7 flex-row" onclick="vote()">
+                  <div class="image-text_13 flex-row justify-between" >
+                    <span class="text-group_29">Make an Impact</span>
+                    <img
+                      class="thumbnail_2"
+                      referrerpolicy="no-referrer"
+                      src="img/06-1-2@2x.svg"
+                    />
+                  </div>
+                </div>
+                <div id="draw-btn" style="display: none;" class="box_22 flex-col" onclick="showModal()">
+                  <div class="draw-btn">
+                    <span class="text_92">Lucky Draw</span>
+                    <img
+                      class="label_4"
+                      referrerpolicy="no-referrer"
+                      src="https://lanhu-oss.lanhuapp.com/SketchPngb8aecf6a2b27954ec88cba2ec4d195e32b853b5c99cfdeb557920d69611b210e"
+                    />
+                    <img
+                      class="label_5"
+                      referrerpolicy="no-referrer"
+                      src="https://lanhu-oss.lanhuapp.com/SketchPngce1c32cd969734616b932f2a9106c1dda5e1c2cb16cce1796c9366415aedf49a"
+                    />
+                  </div>
+                  </div>
+              </div>
+            </div>
+            <img
+              class="image_23"
+              referrerpolicy="no-referrer"
+              src="https://lanhu-oss.lanhuapp.com/SketchPng88a41ff5cb51308f091eb57069923ae8ce65ade2db2c4ab8d9648d0c8b751644"
+            />
+            <div class="image-text_14 flex-row justify-between">
+              <div class="box_20 flex-col"></div>
+              <div class="text-group_30 flex-col">
+                <span class="text_87">Empowering</span>
+                <span class="text_88"
+                  >To Spark Meaningful Change</span
+                >
+                <span class="paragraph_6"
+                  >Show your support and win exciting rewards!
+                  Join us in creating a cleaner future and be part of a movement that makes a real difference—while earning exciting rewards along the way!</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- <div class="group_25 flex-col">
+            <div class="block_13 flex-row justify-between">
+              <img
+                class="image_24"
+                referrerpolicy="no-referrer"
+                src="https://lanhu-oss.lanhuapp.com/SketchPng564ba2c086dcf3151dca622820e914461ffecfc4b162f982257fb26641240a02"
+              />
+              <div class="box_21 flex-col">
+                <div class="text-group_31 flex-col">
+                  <span class="text_89">Green Energy Value</span>
+                  <span class="text_90">319981</span>
+                  <span class="text_91"
+                    >1 Support = 100 Green Energy</span
+                  >
+                </div>
+                <div class="box_22 flex-col">
+                  <span class="text_92">Click to draw</span>
+                  <img
+                    class="label_4"
+                    referrerpolicy="no-referrer"
+                    src="https://lanhu-oss.lanhuapp.com/SketchPngb8aecf6a2b27954ec88cba2ec4d195e32b853b5c99cfdeb557920d69611b210e"
+                  />
+                  <img
+                    class="label_5"
+                    referrerpolicy="no-referrer"
+                    src="https://lanhu-oss.lanhuapp.com/SketchPngce1c32cd969734616b932f2a9106c1dda5e1c2cb16cce1796c9366415aedf49a"
+                  />
+                </div>
+              </div>
+            </div>
+            <img
+              class="image_25"
+              referrerpolicy="no-referrer"
+              src="https://lanhu-oss.lanhuapp.com/SketchPng88a41ff5cb51308f091eb57069923ae8ce65ade2db2c4ab8d9648d0c8b751644"
+            />
+            <div class="image-text_15 flex-row justify-between">
+              <div class="group_26 flex-col"></div>
+              <div class="text-group_32 flex-col">
+                <span class="text_93">Empowering</span>
+                <span class="text_94"
+                  >To Fuel Meaningful Change</span
+                >
+                <span class="paragraph_7"
+                  >Cast your vote and win exciting rewards!<br /><br />Your action helps build the initial momentum for PURE POWER ACTION.</span
+                >
+              </div>
+            </div>
+          </div> -->
+          <div class="group_27 flex-col">
+            <div class="box_23 flex-row justify-between">
+              <img
+                class="image_26"
+                referrerpolicy="no-referrer"
+                src="img/06-2-1@2x.svg"
+              />
+              <div class="block_14 flex-col">
+                <span class="text_95">Pure Power Level</span>
+                <div class="text-wrapper_16">
+                  <span class="text_96">（</span>
+                  <span class="text_97">updated weekly)</span>
+                </div>
+                <span class="text_98">112980</span>
+                <span class="text_99"
+                  >1 Sale = 1000 Pure Power</span
+                >
+                <a href="https://store.vaporesso.com/pages/vaporesso-bfcm" target="_blank" class="text-wrapper_17 flex-col">
+                  <span class="text_100">Shop Now</span>
+                </a>
+              </div>
+            </div>
+            <img
+              class="image_27"
+              referrerpolicy="no-referrer"
+              src="img/Mob-line-01@2x.svg"
+            />
+            <div class="image-text_16 flex-row justify-between">
+              <div class="group_28 flex-col"></div>
+              <div class="text-group_33 flex-col">
+                <span class="text_101">Amplifying</span>
+                <span class="text_102"
+                  >Accelerating The Sustainable Impact</span
+                >
+                <span class="text_103"
+                  >Explore exclusive deals at the VAPORESSO online store and discover a diverse range of products. Every purchase you make contributes to the growing force of PURE POWER ACTION, accelerating its impact worldwide. Through your unwavering support, we’re able to drive this movement forward on a global scale. </span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section_8 flex-col">
+          <div class="section_9 flex-row justify-between">
+            <img
+              class="image_28"
+              referrerpolicy="no-referrer"
+              src="img/06-3-1@2x.svg"
+            />
+            <div class="text-wrapper_19 flex-col align-center">
+                <span class="text_104">Pure Power Level</span>
+                <div class="text-wrapper_18">
+                    <span class="text_105">（</span>
+                    <span class="text_106">updated weekly)</span>
+                </div>
+              <span class="text_107">112980</span>
+              <span class="text_108"
+                >1 Post = 1000 Pure Power</span
+              >
+              <span class="text_109"
+                >1 Interaction = 100 Pure Power</span
+              >
+              <a href="https://community.vaporesso.com/t/unleash-the-holiday-magic-bfcm-extravaganza-with-our-community-app/1230" target="_blank" class="text-wrapper_20 flex-col">
+                <span class="text_110">Join the Conversation</span>
+              </a>
+            </div>
+          </div>
+          <img
+            class="image_29"
+            referrerpolicy="no-referrer"
+            src="https://lanhu-oss.lanhuapp.com/SketchPng88a41ff5cb51308f091eb57069923ae8ce65ade2db2c4ab8d9648d0c8b751644"
+          />
+          <div class="image-text_17 flex-row justify-between">
+            <div class="box_24 flex-col"></div>
+            <div class="text-group_34 flex-col">
+              <span class="text_111">Illuminating</span>
+              <span class="text_112"
+                >Inspiring ECO Lifestyle Worldwide</span
+              >
+              <span class="text_113"
+                >Join the VAPORESSO Community and share your illuminating ideas on eco-lifestyle. Your insights may help spread the energy that inspires sustainable lifestyles across the globe. Drive the PURE POWER ACTION imitative forward, strengthening our mission to create a cleaner, brighter future for all.</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block_15 flex-col">
+        <div class="text-group_35 flex-col">
+          <span class="text_74"
+            >Pure Power Action Is In Full Swing</span
+          >
+          <span class="text_75"
+            >Uniting the power of individuals across the globe, VAPORESSO is trying to make a meaningful contribution to the planet and demonstrating a shared commitment to an eco-friendly future. As the reach of Pure Power Action continues to grow, sustainable practices are becoming a natural part of everyday life, transforming communities into thriving,  eco-friendly spaces.</span
+          >
+        </div>
+        <!-- <div class="section_3 flex-row justify-center">
+          <div class="image-text_18 flex-row justify-between">
+            <span class="text-group_18">Watch the video</span>
+            <img
+              class="label_3"
+              referrerpolicy="no-referrer"
+              src="img/07-1@2x.svg"
+            />
+          </div>
+        </div> -->
+      </div>
+      <img
+        class="image_16"
+        referrerpolicy="no-referrer"
+        src="img/Mob-07@3x.jpg"
+      />
+      <div  class="page-two">
+          <div  class="p-box_1 flex-col">
+            <div  class="p-text-group_1 flex-col">
+              <span  class="p-paragraph_1"
+                >Paving the Path <br/> Towards A Brighter Tomorrow</span
+              >
+              <span  class="p-text_1"
+                >VAPORESSO is proud to champion a more sustainable way of life. Join us by signing the Pure Living Proposal— a shared commitment to shaping a brighter, greener tomorrow. Let’s start making eco-conscious choices part of our everyday lives and inspiring others to follow. Together, making green living a part of everyday life and building a future where green is the new norm.</span
+              >
+            </div>
+
+            <div class="p-card" onclick="handleClickCard()">
+              <div  class="p-group_1 p-front flex-col">
+                <img
+                   class="p-image_2"
+                  referrerpolicy="no-referrer"
+                  src="img/Mob-01-3@2x.svg"
+                />
+                <div  class="p-group_2 flex-row">
+                  <span  class="p-text_2">PURE P</span>
+                  <img
+                     class="p-label_1"
+                    referrerpolicy="no-referrer"
+                    src="img/08-2@2x.svg"
+                  />
+                  <span  class="p-text_3">WER FOR ALL</span>
+                </div>
+                <span  class="p-text_4">Pure Living Proposal</span>
+                <img
+                   class="p-image_3"
+                  referrerpolicy="no-referrer"
+                  src="img/lin"
+                />
+              </div>
+              <div class="p-group_3 p-back flex-col">
+                <div  class="p-back-warpper">
+                  <span  class="p-text_5">Dear VAPORESSO Family,</span>
+                  <div  class="p-group_4 flex-col"></div>
+                  <div  class="p-group_5 flex-col"></div>
+                  <div  class="p-group_6 flex-col"></div>
+                  <div  class="p-group_7 flex-col"></div>
+                  <div  class="p-group_8 flex-col"></div>
+                  <div  class="p-group_9 flex-col"></div>
+                  <div  class="p-group_10 flex-col"></div>
+                  <img
+                     class="p-image_4"
+                    referrerpolicy="no-referrer"
+                    src="img/VAPORESSO_CARE_logo@3x.png"
+                  />
+                  <div class="p-line"></div>
+                  <!-- <img
+                     class="p-image_5"
+                    referrerpolicy="no-referrer"
+                    src="https://lanhu-oss.lanhuapp.com/SketchPng0932991facf11c89b07c42af07aca0a02a061aa1f6098ca8fe05de81638273f2"
+                  /> -->
+                  <div  class="p-text-wrapper_1">
+                    <span  class="p-paragraph_2"
+                      >As climate change accelerates, environmental issues have become a critical challenge that none of us can ignore. Now, more than ever, choosing clean energy is a meaningful step we can each take to protect our planet.</span>
+                    <span  class="p-text_6"
+                      >VAPORESSO is calling on everyone to make a positive impact by embracing clean energy, reducing emissions, and building a sustainable future together.</span
+                    >
+                  </br> </br>
+                    <span  class="p-paragraph_3"
+                      >Here are some ways to make a difference:</span>
+                      </br>
+                    <span  class="p-text_7"
+                      >- Opt for green energy options </span
+                    >
+                    <span  class="p-text_8"
+                      > like solar panels, and </span
+                    >
+                    <span  class="p-text_9"
+                      > support low-carbon initiatives </span
+                    >
+                    <span  class="p-paragraph_4"
+                      > to contribute to a cleaner world.<br /></span>
+                    <span  class="p-text_10"
+                      >- Prioritize energy-efficient household appliances and devices </span
+                    >
+                    <span  class="p-paragraph_5"
+                      > like solar panels and wind turbines.<br /></span>
+                    <span  class="p-text_11"
+                      >- Support the development of renewable energy </span
+                    >
+                    <span  class="p-paragraph_6"
+                      > by advocating for the installation of solar and wind power systems.<br />- Whenever possible, </span
+                    >
+                    <span  class="p-text_12">use public transportation</span>
+                    <span  class="p-paragraph_7"
+                      > to conserve energy and reduce unnecessary power consumption.<br /><br />Together, we can make a difference. Let’s protect our planet and ensure a healthy, thriving world for future generations!</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div  class="p-box_2 flex-col">
+            <span  class="p-text_13"
+              >BE A PART OF GREEN FUTURE</span
+            >
+            <div  class="p-box_3 flex-col" id="thumb-section">
+              <div  class="p-box_4 flex-row">
+                <div  class="p-image-wrapper_1 flex-col thumb-box">
+                  <img
+                     class="p-label_2"
+                    referrerpolicy="no-referrer"
+                    src="img/9-11.svg"
+                  />
+                </div>
+                <div  class="p-box_5 flex-col thumb-box">
+                     <img
+                     class="p-label_2"
+                    referrerpolicy="no-referrer"
+                    src="img/9-11.svg"
+                  />
+                </div>
+                <div  class="p-box_6 flex-col thumb-box">
+                     <img
+                     class="p-label_2"
+                    referrerpolicy="no-referrer"
+                    src="img/9-11.svg"
+                  />
+                </div>
+                <div  class="p-box_7 flex-col thumb-box">
+                     <img
+                     class="p-label_2"
+                    referrerpolicy="no-referrer"
+                    src="img/9-11.svg"
+                  />
+                </div>
+                <div  class="p-box_8 flex-col thumb-box">
+                     <img
+                     class="p-label_2"
+                    referrerpolicy="no-referrer"
+                    src="img/9-11.svg"
+                  />
+                </div>
+              </div>
+              <div  class="p-box_9 flex-row">
+                <div  class="p-box_10 flex-col thumb-box">
+                    <img
+                    class="p-label_2"
+                   referrerpolicy="no-referrer"
+                   src="img/9-11.svg"
+                 />
+                </div>
+                <div  class="p-box_11 flex-col thumb-box">
+                    <img
+                    class="p-label_2"
+                   referrerpolicy="no-referrer"
+                   src="img/9-11.svg"
+                 />
+                </div>
+                <div  class="p-box_12 flex-col thumb-box">
+                    <img
+                    class="p-label_2"
+                   referrerpolicy="no-referrer"
+                   src="img/9-11.svg"
+                 />
+                </div>
+                <div  class="p-box_13 flex-col thumb-box">
+                    <img
+                    class="p-label_2"
+                   referrerpolicy="no-referrer"
+                   src="img/9-11.svg"
+                 />
+                </div>
+                <div  class="p-box_14 flex-col thumb-box">
+                    <img
+                    class="p-label_2"
+                   referrerpolicy="no-referrer"
+                   src="img/9-11.svg"
+                 />
+                </div>
+              </div>
+              <div  class="p-text-wrapper_2 flex-col">
+                <span  class="p-text_14">Choose Your Profile</span>
+              </div>
+            </div>
+            <div  class="p-box_15 flex-col">
+              <div  class="p-text-wrapper_3 flex-col">
+                <span  class="p-text_15">Sign Your Name</span>
+                <input type="text">
+              </div>
+            </div>
+            <div  class="p-text-wrapper_4 flex-col">
+              <span  class="p-text_16">Confirm</span>
+            </div>
+            <span  class="p-paragraph_8"
+              >Honorable Global Green<br /> Energy Pioneer </span
+            >
+            <div  class="p-box_16 flex-col">
+              <div  class="p-image-text_1 flex-row justify-between">
+                <div  class="p-section_1 flex-col"></div>
+                <span  class="p-text-group_2">Вероника Швед</span>
+              </div>
+              <!-- <div  class="p-box_17 flex-row justify-between">
+                <span  class="p-text_17">Darya Karpovich</span>
+                <div  class="p-image-text_2 flex-row justify-between">
+                  <div  class="p-box_18 flex-col"></div>
+                  <span  class="p-text-group_3">Bekkhan Borchashvili</span>
+                </div>
+              </div>
+              <div  class="p-box_19 flex-row justify-between">
+                <div  class="p-image-text_3 flex-row justify-between">
+                  <div  class="p-block_1 flex-col"></div>
+                  <span  class="p-text-group_4">Darya Karpovich</span>
+                </div>
+                <div  class="p-image-text_4 flex-row justify-between">
+                  <div  class="p-block_2 flex-col"></div>
+                  <span  class="p-text-group_5">Fedor Berestov</span>
+                </div>
+              </div>
+              <div  class="p-box_20 flex-row justify-between">
+                <span  class="p-text_18">Greg Coulton</span>
+                <div  class="p-image-text_5 flex-row justify-between">
+                  <div  class="p-group_11 flex-col"></div>
+                  <span  class="p-text-group_6">Viktoria Aldatova</span>
+                </div>
+              </div>
+              <div  class="p-image-text_6 flex-row justify-between">
+                <div  class="p-box_21 flex-col"></div>
+                <span  class="p-text-group_7">Viktoria Aldatova</span>
+              </div>
+              <div  class="p-box_22 flex-row justify-between">
+                <span  class="p-text_19">Greg Coulton</span>
+                <div  class="p-image-text_7 flex-row justify-between">
+                  <div  class="p-block_3 flex-col"></div>
+                  <span  class="p-text-group_8">Viktoria Aldatova</span>
+                </div>
+              </div>
+              <div  class="p-box_23 flex-row justify-between">
+                <span  class="p-text_20">Greg Coulton</span>
+                <div  class="p-image-text_8 flex-row justify-between">
+                  <div  class="p-group_12 flex-col"></div>
+                  <span  class="p-text-group_9">Viktoria Aldatova</span>
+                </div>
+              </div>
+              <div  class="p-image-text_9 flex-row justify-between">
+                <div  class="p-block_4 flex-col"></div>
+                <span  class="p-text-group_10">Viktoria Aldatova</span>
+              </div>
+              <div  class="p-box_24 flex-row justify-between">
+                <span  class="p-text_21">Greg Coulton</span>
+                <div  class="p-image-text_10 flex-row justify-between">
+                  <div  class="p-box_25 flex-col"></div>
+                  <span  class="p-text-group_11">Viktoria Aldatova</span>
+                </div>
+              </div> -->
+              <!-- <div  class="p-box_26 flex-col"></div>
+              <div  class="p-box_27 flex-col"></div> -->
+            </div>
+          </div>
+          <div  class="p-text-wrapper_5 flex-col">
+            <span  class="p-paragraph_9"
+              >Terms and Conditions:<br />VAPORESSO is running PURE POWER FOR ALL Activity for its customers.
+              Before submitting an entry, please review the official contest rules located at 活动网址
+              Agreement to Official Rules: Participant’s participation in the Event constitutes Participant’s full and unconditional agreement to and acceptance of these Official Rules and the decisions of Sponsor, which are final and binding.
+              By participating in the Event and submitting a Submission, the Participant expressly agrees to participate in supporting marketing and other promotions and endorsements for the Sponsor and its partners.
+              Sponsor may display Submission on its website or on other promotional materials without attribution or any compensation owed to Participant. For more details please check on OFFICIAL RULES.</span
+            >
+          </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/animate.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/bottom.js"></script>
+    <script src="js/request.js"></script>
+
+  </body>
+</html>
+
